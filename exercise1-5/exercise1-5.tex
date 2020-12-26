@@ -1,0 +1,145 @@
+\section{연습문제 1장 5절: 비율판정법}
+
+\subsection{1번 (1)}
+
+비율판정법의 따름정리(따름정리 5.0.5)를 이용하여 풀 수 있다. 우선 $a_n$을 다음과 같이 정의한다.
+
+\[
+a_n:=\frac{x^{2n}}{(2n)!}
+\]
+
+$a_{n+1}/a_n$을 구하면,
+
+\[
+\frac{a_{n+1}}{a_n}=\frac{\frac{x^{2(n+1)}}{\{2(n+1)\}!}}{\frac{x^{2n}}{(2n)!}}=\frac{x^2}{(2n+1)(2n+2)}
+\]
+
+이때 분자는 $n$에 대하여 상수이고, 분모는 $n$이 증가할 때 같이 증가하므로, $lim_{n\to\infty}a_{n+1}/a_n<1$. 급수 $\sum a_n$은 모든 실수 $x$에 대하여 수렴.
+
+\subsection{1번 (2)}
+
+(1)과 같은 방법으로 풀이하여 보자. 우선 $a_n$을 다음과 같이 놓자.
+
+\[
+a_n:=\frac{x^{2n+1}}{(2n+1)!}
+\]
+
+$a_{n+1}/a_n$을 구하면,
+
+\[
+\frac{a_{n+1}}{a_n}=\frac{\frac{x^{2(n+1)+1}}{\{2(n+1)+1\}!}}{\frac{x^{2n+1}}{(2n+1)!}}=\frac{x^2}{(2n+2)(2n+3)}
+\]
+
+이번에도 분자는 $n$에 대하여 상수이고, 분모는 $n$이 증가할 때 같이 증가하므로, $lim_{n\to\infty}a_{n+1}/a_n<1$. 급수 $\sum a_n$은 모든 실수 $x$에 대하여 수렴.
+
+\subsection{2번: Pell 수열}
+
+비율판정법의 따름정리(따름정리 5.0.5)를 이용하여 풀 수 있다. $r_n:=p_{n+1}/p_n$일 때, 수열 $r_n$에 대하여 다음이 성립한다.
+
+\[
+p_{n+2}=2p_{n+1}+p_n \Longleftrightarrow \frac{p_{n+2}}{p_{n+1}}=2+\frac{p_n}{p_{n+1}} \Longleftrightarrow r_{n+1}=2+r_n^{-1}
+\]
+
+$\lim_{n\to\infty}r_n=:\rho$라고 가정하면 극한값이 존재하므로 $\lim_{n\to\infty}r_{n+1}=\rho$. 다음이 성립한다.
+
+\[
+\rho=2+\rho^{-1} \longrightarrow \rho=1\pm\sqrt{2}
+\]
+
+이때 $\rho\geq0$이므로 $\rho=1+\sqrt{2}$. 하지만 이는 $\lim_{n\to\infty}r_n$이 존재하여야 의미가 있다. 다음이 성립하고,
+
+\[
+r_{n+1}-\rho=r_n^{-1}-\rho^{-1}=\frac{\rho-r_n}{r_n\rho}=-\frac{r_n-\rho}{r_n\rho}
+\]
+
+다음도 또한 성립한다.
+
+\[
+|r_{n+1}-\rho|\leq\rho^{-1}|r_n-\rho|\leq\rho^{-2}|r_n-\rho|\leq\cdots\leq\rho^{-n}|r_1-\rho|
+\]
+
+여기서 $\lim_{n\to\infty}\rho^{-n}=0$이므로
+
+\[
+\lim_{n\to\infty}|r_n-\rho|=0
+\]
+
+$(r_n)$은 $1+\sqrt{2}$에 수렴한다.\footnote{TMI: 참고로 이 수는 "silver ratio"라고 한다. 비슷하게 피보나치 수열에서 나오는 비율은 황금 비율(golden ratio)이라고 한다.}라서 두 번째 질문은 비교판정법으로 쉽게 해결할 수 있다. $a_n$을 다음과 같이 정의할 때
+
+\[
+a_n:=p_n^{-1}
+\]
+
+$a_{n+1}/a_n$을 구하면,
+\[
+\frac{a_{n+1}}{a_n}=\frac{p_n}{p_{n+1}}=\rho^{-1}
+\]
+
+\subsection{3번 (1)}
+$a_n$을 다음과 같이 정의하자.
+
+\[
+a_n:=\frac{2^{n}n!}{n^n}
+\]
+
+$a_{n+1}/a_n$을 구하면,
+
+\[
+\frac{a_{n+1}}{a_n}=\frac{\frac{2^{n+1}(n+1)!}{(n+1)^{n+1}}}{\frac{2^{n}n!}{n^n}}=\frac{2^{n+1}(n+1)!}{(n+1)^{n+1}}\cdot\frac{n^n}{2^{n}n!}=2(\frac{n}{n+1})^n
+\]
+
+따라서 $\lim_{n\to\infty}a_{n+1}/a_n=\frac{2}{e}<1$이므로 $\sum a_n$은 수렴.
+
+\subsection{3번 (2)}
+$a_n$을 다음과 같이 정의하자.
+
+\[
+a_n:=\frac{n^2}{e^n}
+\]
+
+$a_{n+1}/a_n$을 구하면,
+
+\[
+\frac{a_{n+1}}{a_n}=\frac{(n+1)^2}{e^{n+1}}\cdot\frac{e^n}{n^2}=\frac{(n+1)^2}{en^2}=\frac{1}{e}(1+\frac{2}{n}+\frac{1}{n^2})
+\]
+
+따라서 $\lim_{n\to\infty}a_{n+1}/a_n<1$이므로 $\sum a_n$은 수렴.
+
+\subsection{3번 (3)}
+$a_n$을 다음과 같이 정의하자.
+
+\[
+a_n:=\frac{2^n}{n^2}
+\]
+
+$a_{n+1}/a_n$을 구하면,
+
+\[
+\frac{a_{n+1}}{a_n}=\frac{2^{n+1}}{(n+1)^2}\cdot\frac{n^2}{2^n}=2(\frac{n^2}{(n+1)^2})
+\]
+
+따라서 $\lim_{n\to\infty}a_{n+1}/a_n>1$이므로 $\sum a_n$은 발산.
+
+\subsection{3번 (4)}
+$a_n$을 다음과 같이 정의하자.
+
+\[
+a_n:=\frac{2^n}{n^3}
+\]
+
+$a_{n+1}/a_n$을 구하면,
+
+\[
+\frac{a_{n+1}}{a_n}=\frac{2^{n+1}}{(n+1)^3}\cdot\frac{n^3}{2^n}=2(\frac{n^3}{(n+1)^3})
+\]
+
+따라서 $\lim_{n\to\infty}a_{n+1}/a_n>1$이므로 $\sum a_n$은 발산.
+
+\subsection{4번: $\sum1/n^2$의 수렴판정}
+$a_n:=1/n^2$일 때, $a_{n_1}/a_n$을 구하면,
+
+\[
+\frac{a_{n+1}}{a_n}=\frac{n^2}{(n+1)^2}
+\]
+
+이때 $\lim_{n\to\infty}a_{n+1}/a_n=1$이므로 비교판정법을 사용할 수 없다.
