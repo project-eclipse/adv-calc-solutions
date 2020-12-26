@@ -1,0 +1,23 @@
+name: LaTeX Compile
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Install fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install fonts-nanum-extra fonts-noto-cjk
+
+      - name: Github Action for LaTeX
+        uses: xu-cheng/latex-action@v2
