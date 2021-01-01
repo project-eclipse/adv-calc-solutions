@@ -1,0 +1,100 @@
+\section{연습문제 2장 2절: 거듭제곱급수와 수렴반경}
+
+\subsection{3번 (3)}
+주어진 거듭제곱급수에서 $a_n:=n/6^n$이라고 놓자. 이제 정리 2.1.5를 이용하기 위해 극한값을 구해보자.
+\[
+l:=\Lim{n}\left|\frac{a_{n+1}}{a_n}\right|=\Lim{n}\left|\frac{n+1}{6^{n+1}}\cdot\frac{6^n}{n}\right|=\Lim{n}\left|\frac{n+1}{6n}\right|=\frac{1}{6}
+\]
+따라서 수렴반경 $r=l^{-1}=6$이고, $-6<x<6$에 대해서는 주어진 거듭제곱급수가 수렴한다. 이제 $x=6$일 때와 $x=-6$일 때를 알아보자. 먼저 $x=6$일 때에는,
+\[
+\sum\frac{n\cdot6^n}{6^n}=\sum n
+\]
+이므로 발산함을 알 수 있다. $x=-6$일 때에는,
+\[
+\sum\frac{n\cdot(-6)^n}{6^n}=\sum(-1)^n n
+\]
+이므로 일반항 판정법에 의해 발산함을 알 수 있다. 따라서 주어진 거듭제곱급수 $\sum nx^n/6^n$의 수렴범위는 $-6<x<6$이다.
+
+\subsection{3번 (4)}
+주어진 거듭제곱급수에서 $a_n:=n^2/(1+n^2)$이라고 놓자. 이제 정리 2.1.5를 이용하기 위해 극한값을 구해보자.\footnote{마지막 단계에서, 분모와 분자 모두 최고차항이 $x^4$임을 이용하면 된다.}
+\[
+l:=\Lim{n}\left|\frac{a_{n+1}}{a_n}\right|=\Lim{n}\left|\frac{(n+1)^2}{\{1+(n+1)^2\}}\frac{(1+n^2)}{n^2}\right|=1
+\]
+따라서 수렴반경 $r=l^{-1}=1$이고, $-1<x<1$에 대해서는 주어진 거듭제곱급수가 수렴한다. 이제 $x=1$일 때와 $x=-1$일 때를 알아보자. 먼저 $x=1$일 때에는,
+\[
+\sum\frac{n^2}{1+n^2}
+\]
+이므로 일반항 판정법에 의해 발산함을 알 수 있다. $x=-1$일 때에는,
+\[
+\sum\frac{(-1)^n n^2}{1+n^2}
+\]
+이므로 일반항 판정법에 의해 발산함을 알 수 있다. 따라서 주어진 거듭제곱급수 $\sum n^2x^n/(1+n^2)$의 수렴범위는 $-1<x<1$이다.
+
+\subsection{3번 (5)}
+주어진 거듭제곱급수에서 $a_n:=7^n/n!$이라고 놓자. 이제 정리 2.1.5를 이용하기 위해 극한값을 구해보자.
+\[
+l:=\Lim{n}\left|\frac{a_{n+1}}{a_n}\right|=\Lim{n}\left|\frac{7^{n+1}}{(n+1)!}\frac{n!}{7^n}\right|=\Lim{n}\left|\frac{7}{n+1}\right|=0
+\]
+따라서 수렴반경 $r=l^{-1}=\infty$이고, 따라서 주어진 거듭제곱급수 $\sum7^nx^n/n!$의 수렴범위는 실수 전체이다.\footnote{사실 이렇게 거쳐 갈 필요 없이, 팩토리얼은 지수함수보다 훨씬 더 빠르게 증가함을 알면 이 문제는 보자마자 해결할 수도 있다.}\footnote{TMI: 이런 이유로 알고리즘 설계 쪽에서는 시간복잡도가 $O(n!)$인 알고리즘을 $O(2^n)$인 알고리즘으로 개선한 것도 중요하게 여긴다.}
+
+\subsection{3번 (6)}
+문제에 나온 꼴으로는 (지금까지 배운 방법으로는) 수렴범위를 찾기 어려우므로 일단 $t=x+2$라고, 식을 다음과 같이 바꾼 다음 시작하자.
+\[
+\sum \frac{(-1)^nt^n}{n^n}
+\]
+$a_n:=(-1)^n/n^n$이라고 놓고, 정리 2.1.5를 이용하기 위해 극한값을 구해보자.\footnote{둘째줄 쯤에서 자연상수를 생각 안하고 ``어 이거 당연히 0 아니야?''라고 하고 끝내면 다행히 답은 맞지만 틀린 풀이이다. 예전에 내가 이렇게 하다 틀렸다...}
+\begin{align*}
+l:=&\Lim{n}\left|\frac{a_{n+1}}{a_n}\right|=\Lim{n}\left|\frac{(-1)^{n+1}}{(n+1)^{n+1}}\frac{n^n}{(-1)^n}\right|=\Lim{n}\left|-\frac{n^n}{(n+1)^{n+1}}\right|=\Lim{n}\left|\frac{n^n}{(n+1)^{n+1}}\right|\\
+=&\Lim{n}\left|\frac{1}{n}\left(\frac{n}{n+1}\right)^{n+1}\right|=\Lim{n}\left|\frac{1}{n}\left\{\left(\frac{n+1}{n}\right)^{n+1}\right\}^{-1}\right|=\Lim{n}\left|\frac{1}{n}\left\{\left(1+\frac{1}{n}\right)^{n+1}\right\}^{-1}\right|\\
+=&\Lim{n}\left|\frac{1}{ne}\right|=0
+\end{align*}
+따라서 수렴반경 $r=l^{-1}=\infty$, 따라서 거듭제곱급수 $\sum (-1)^nt^n/n^n$의 수렴범위는 실수 전체이고, 문제에서 주어진 거듭제곱급수 $\sum (-1)^n(x-2)^n/n^n$의 수렴범위도 실수 전체이다.
+
+\subsection{4번: 홀수/짝수 나누기 또는 치환 적분}
+\subsubsection{홀수/짝수 나누기}
+다음 두 식이 성립함은 이미 증명했다.
+\begin{align}\label{log_1_plus_x}
+\log(1+x)=\infsum{n=1}\frac{(-1)^{n-1}x^n}{n}
+\end{align}
+\begin{align}\label{log_1_minus_x}
+-\log(1-x)=\infsum{n=1}\frac{x^n}{n}
+\end{align}
+(\ref{log_1_plus_x})와 (\ref{log_1_minus_x})을 더하면 원하는 식을 얻는다.
+\[
+\log\frac{1+x}{1-x}=2\infsum{n=1}\frac{x^{2n-1}}{2n-1}
+\]
+
+\subsubsection{치환 적분}
+주어진 범위에서 다음이 성립한다.
+\[
+\infsum{n=0}x^{2n}=\frac{1}{1-x^2}
+\]
+여기서 양변을 적분하자.
+\[
+\infsum{n=0}\frac{x^{2n+1}}{2n+1}=\int^x_0 \frac{1}{1-t^2}dt
+\]
+우변의 적분은 치환 적분을 통해 해결할 수 있다.\footnote{사실 이렇게 안하고도 $(1-x^2)^{-1}$이 $\tanh^{-1}$의 도함수라는 사실을 알고 있으면 바로 풀린다.} $t=\sin u$라고 하면 $dt=\cos udu$이므로\footnote{$|x|<1$이라는 것을 보고 합리적 의심으로 이렇게 치환하는 것이 가장 중요한 아이디어인 것 같다. 물론 이렇게 적분 안하고 푼다면 상관 없겠지만...}\footnote{편의상 적분상수는 생략했다.}
+\begin{align*}
+\int \frac{1}{1-t^2}dt=&\int\frac{1}{\cos u}du=\int \sec udu\\
+=&\int \frac{\sec^2 u+\sec u\tan u}{\sec u+\tan u}du=\log\left|\sec u+\tan u\right|\\
+=&\log\left(\frac{1}{\sqrt{1-t^2}}+\frac{t}{\sqrt{1-t^2}}\right)=\frac{1}{2}\log\left\{\frac{(1+t)^2}{1-t^2}\right\}=\frac{1}{2}\log\frac{1+t}{1-t}
+\end{align*}
+따라서 원하는 식이 나온다.
+\[
+\infsum{n=0}\frac{x^{2n+1}}{2n+1}=\int^x_0 \frac{1}{1-x^2}dx=\frac{1}{2}\log\frac{1+x}{1-x}\Longleftrightarrow\log\frac{1+x}{1-x}=2\infsum{n=1}\frac{x^{2n-1}}{2n-1}
+\]
+
+\subsection{6번: 앞에서 유한개 빼기}
+우선, 첫번째 거듭제곱급수와 세번째 거듭제곱급수의 수렴반경이 같음은 쉽게 알 수 있다.
+\[
+\sum_n a_nx^{n+N}=x^N\sum_n a_nx^n
+\]
+이제 첫번째 거듭제곱급수와 두번째 거듭제곱급수의 수렴반경이 같음을 보이면 된다. 우선 $b_n:=a_{N+n-1}$이라고 놓자. 이러한 경우 두번째 거듭제곱급수를 다음과 같이 쓸 수 있다.
+\[
+\sum_{n\geq N}a_nx^n=\sum_n b_nx^n
+\]
+정리 2.1.5를 이용하기 위해 극한값을 살펴보자.
+\[
+l:=\Lim{n}\left|\frac{b_{n+1}}{b_n}\right|=\Lim{n}\left|\frac{a_{N+n}}{a_{N+n-1}}\right|=\Lim{n}\left|\frac{a_{n+1}}{a_n}\right|
+\]
+무한으로 가는 극한이므로, 수열 $(|b_{n+1}/b_n|)$과 $(|a_{n+1}/a_n|)$의 극한값은 같다. 따라서 첫번째, 두번째의 수렴반경은 같고, 따라서 세 거듭제곱급수의 수렴반경은 모두 같다.\footnote{그렇다면 수렴범위는 어떨까? 우선 첫번째와 세번째에서는 상수를 곱해도 두 거듭제곱급수의 수렴범위가 같음은 분명하고, $x=\pm l$을 대입했을 때, 첫번째와 두번째에서 급수의 수렴 여부는 유한개의 항을 빼도 달라지지 않으므로 첫번째와 두번째의 수렴범위도 같을 것이다.} 

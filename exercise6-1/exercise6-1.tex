@@ -1,0 +1,131 @@
+\section{연습문제 6장 1절: 행렬과 선형사상}
+\subsection{1번: 행렬곱과 경우의 수}
+주어진 행렬의 곱 $AB$의 $(i, k)$항의 값은 다음과 같다.
+\begin{align*}
+\sum^3_{j=1}a_{ij}b_{jk}
+\end{align*}
+예를 들어, $AB$의 $(1, 1)$항은 $A$의 `동대문'행과 $B$의 `갑'열의 내적과 같다. 여기서, `동대문'행은 각각의 과일 가격을 나타내고, `갑'열은 사고 싶은 과일의 개수를 나타내므로, $(1, 1)$항은 갑이 동대문에서 과일을 살 때 내는 돈이 된다. 이를 일반화하면, $AB$의 $(m,n)$항은 $A$의 $m$행에 대응하는 곳에서 $n$에 대응하는 사람이 쇼핑을 할 때의 지출을 나타낸다고 할 수 있다.
+
+\subsection{3번: 마르코프 연쇄}
+$P^2$의 $(i, j)$항은 $P$의 $i$행과 $j$행의 내적이다. 또한 $i$행과 $j$행의 내적은 처음 상태가 $i$였다가 1년 후 $j$가 될 확률을 나타낸다.\footnote{편의상 도시에 사는 상태가 1, 농촌에 사는 상태가 2라고 하자.} 여기에 다시 $P$를 곱하면 $(i, j)$행은 처음 상태가 $i$였다가 2년 후 상태가 $j$일 확률을 나타낸다. 이렇게 다음 상태가 이전 상태에만 영향을 받는 확률적 모델을 마르코프 연쇄라고 한다.
+
+\subsection{4번: 행렬 썰기}
+$m\times n$ 행렬 $M$을 `썰어서' $mn$-벡터로 바꾸는 변환 $T: \mathbb{R}^{m\times n}\rightarrow \mathbb{R}^{mn}$를 생각하자. 다음 행렬에 대해
+\begin{align*}
+A=\mat{a}{m}{n}
+\end{align*}
+다음과 같이 정의하자.
+\begin{align*}
+T(A)=(a_{11}, a_{12}, \cdots, a_{1n}, a_{21}, a_{22}, \cdots, a_{2n}, \cdots, a_{mn})
+\end{align*}
+이때 모든 $mn$-벡터에 대해서 $T$의 역변환 $T^{-1}$을 수행할 수 있으므로, $m\times n$ 행렬 전체의 집합 $\mathbb{R}^{m\times n}$과 $\mathbb{R}^{mn}$은 일대일 대응이다.
+
+\subsection{5번: 야코비 항등식}
+행렬 곱은 결합법칙이 성립함을 이미 알고 있으므로, 그냥 전개하면 된다.
+\begin{align*}
+[[A, B], C]+[[B, C], A]+[[C, A], B]&=[AB-BA, C]+[BC-CB, A]+[CA-AC, B]\\
+&=(ABC-BAC)-(CAB-CBA)\\
+&+(BCA-CBA)-(ABC-ACB)\\
+&+(CAB-ACB)-(BCA-BAC)\\
+&=O
+\end{align*}
+
+\subsection{6번: 교환자와 파울리 행렬(같은 것들)}
+처음에 $\sigma$를 보고 파울리 행렬\footnote{TMI: 물리에서 전자와 같은 `스핀'이 있는 입자들을 다룰 때 자주 쓰이는 행렬이다.}인줄 알았지만 아니였다... 교환자\footnote{TMI: [A, B]와 같은 표기법을 교환자라고 한다. 양자 역학에서 쓰이는 용어이다.}의 값을 그냥 계산하면 된다.
+\begin{align*}
+[\sigma_+, \sigma_-]=\sigma_+\sigma_--\sigma_-\sigma_+=
+\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}-
+\begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}=
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}=\sigma_0
+\end{align*}
+\begin{align*}
+[\sigma_0, \sigma_+]=\sigma_0\sigma_+-\sigma_+\sigma_0=
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}-
+\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}=
+\begin{pmatrix}
+0 & 2 \\
+0 & 0
+\end{pmatrix}=2\sigma_+
+\end{align*}
+\begin{align*}
+[\sigma_0, \sigma_-]=\sigma_0\sigma_--\sigma_-\sigma_0=
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}-
+\begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}=
+\begin{pmatrix}
+0 & 0 \\
+-2 & 0
+\end{pmatrix}=-2\sigma_-
+\end{align*}
+
+\subsection{9번: 복소수와 행렬}
+$J^2=-I$는 $i^2=-1$을 생각나게 한다. 우선 증명부터 하자.
+
+\subsubsection{$J^2=-I$ 증명}
+\begin{align*}
+J^2=
+\begin{pmatrix}
+0 & -1\\
+1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+0 & -1\\
+1 & 0
+\end{pmatrix}=
+\begin{pmatrix}
+-1 & 0\\
+0 & -1
+\end{pmatrix}=-I
+\end{align*}
+
+\subsubsection{복소수(?) 곱셈}
+$I$가 항등 행렬임을 이용하면 된다.
+\begin{align*}
+(aI+bJ)(cI+dJ)&=(aI)(cI)+(bJ)(cI)+(aI)(dJ)+(bJ)(dJ)\\
+&=acI+bcJ+adJ-bdI=(ac-bd)I+(bc+ad)J
+\end{align*}
+복소수의 곱셈 $(a+bi)(c+di)=(ac-bd)+(bc+ad)i$와 똑같음을 볼 수 있다. 

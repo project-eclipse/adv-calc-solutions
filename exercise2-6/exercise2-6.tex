@@ -1,0 +1,22 @@
+\section{연습문제 2장 6절: 역함수 정리, 역삼각함수와 거듭제곱급수}
+\subsection{4번: $\arccos x$}
+\subsubsection{$\arccos x$의 도함수}
+$x=\arccos y$의 도함수를 역함수 정리를 이용하여 구해보자. 우선 다음과 같은 식이 성립한다.
+\begin{align}
+\frac{dy}{dx}=\frac{d}{dx}\cos x=-\sin x=-\sqrt{1-\cos^2 x}=-\sqrt{1-y^2}
+\end{align}
+여기서 역함수 정리를 이용하면 다음과 같다.
+\begin{align}
+\frac{d}{dy}\arccos y=\dfrac{1}{\dfrac{dy}{dx}}=-\frac{1}{\sqrt{1-y^2}}
+\end{align}
+
+\subsubsection{$\arccos x$의 성질}
+$\arccos y$와 $\dfrac{\pi}{2}-\arcsin y$ 모두 치역이 $[0, \pi]$이다. 이 범위에서는 $\cos x$가 일대일 대응이므로, 다음과 같이 쓸 수 있다.
+\begin{align}\label{cos_on_both_sides}
+\cos(\arccos y)=\cos\left(\frac{\pi}{2}-\arcsin y\right)
+\end{align}
+(\ref{cos_on_both_sides})의 우변은 삼각함수의 성질의 의해 다음과 같이 변형할 수 있다.
+\begin{align}
+\cos\left(\frac{\pi}{2}-\arcsin y\right)=\sin(\arcsin y)=y
+\end{align}
+한편, (\ref{cos_on_both_sides})의 좌변은 $y$이므로, 주어진 식이 성립함을 알 수 있다. 
