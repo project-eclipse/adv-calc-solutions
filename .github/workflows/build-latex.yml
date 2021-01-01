@@ -18,7 +18,7 @@ jobs:
         id: install_fonts
         run: |
           sudo apt-get update
-          sudo apt-get install fonts-nanum-extra fonts-noto-cjk
+          sudo apt-get install fonts-nanum-extra fonts-noto-cjk fonts-noto-cjk-extra
 
       - name: Github Action for LaTeX
         id: compile_latex
